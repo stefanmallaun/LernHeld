@@ -25,4 +25,4 @@
 ---
 
 > 📱 Entwickelt in Flutter – für Android, iOS und Tablets.  
-> 🎓 Projekt aus dem sozialen Bereich – inspiriert durch direkte Arbeit mit Menschen mit Behinderung im Diakoniewerk Kirchbichl.
+> 🎓 Projekt aus dem sozialen Bereich – inspiriert durch direkte Arbeit mit Menschen mit Behinderung
