@@ -1,6 +1,6 @@
-# 🦸‍♂️ FörderHeld – Die inklusive Lern-App mit KI-Unterstützung
+# 🦸‍♂️ LernHeld – Die inklusive Lern-App mit KI-Unterstützung
 
-**FörderHeld** ist eine inklusive Lern-App mit KI-Unterstützung für Menschen mit Behinderung, Autismus oder Lernschwierigkeiten. Die App ermöglicht ein barrierearmes, spielerisches Training in Farben, Zahlen, Sprache und weiteren kognitiven Fähigkeiten – angepasst an individuelle Bedürfnisse.
+**LernHeld** ist eine inklusive Lern-App mit KI-Unterstützung für Menschen mit Behinderung, Autismus oder Lernschwierigkeiten. Die App ermöglicht ein barrierearmes, spielerisches Training in Farben, Zahlen, Sprache und weiteren kognitiven Fähigkeiten – angepasst an individuelle Bedürfnisse.
 
 ## ✨ Funktionen
 
@@ -20,7 +20,7 @@
 
 ## 💡 Vision
 
-**FörderHeld** will allen Menschen Zugang zu individueller Förderung ermöglichen – mit Empathie, KI und einfachen Mitteln. Lernen soll Spaß machen, bestärken und die Selbstständigkeit fördern.
+**LernHeld** will allen Menschen Zugang zu individueller Förderung ermöglichen – mit Empathie, KI und einfachen Mitteln. Lernen soll Spaß machen, bestärken und die Selbstständigkeit fördern.
 
 ---
 
