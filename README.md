@@ -1,30 +1,28 @@
-🦸‍♂️ FörderHeld – Die inklusive Lern-App mit KI-Unterstützung
+# 🦸‍♂️ FörderHeld – Die inklusive Lern-App mit KI-Unterstützung
 
-FörderHeld ist eine innovative Lern-App, speziell entwickelt für Menschen mit Behinderung, Autismus oder Lernschwierigkeiten. Die App bietet eine barrierearme, visuelle und sprachgesteuerte Umgebung, in der Nutzer:innen spielerisch Farben, Zahlen, Schreiben und grundlegende kognitive Fähigkeiten trainieren können.
-✨ Funktionen:
+**FörderHeld** ist eine inklusive Lern-App mit KI-Unterstützung für Menschen mit Behinderung, Autismus oder Lernschwierigkeiten. Die App ermöglicht ein barrierearmes, spielerisches Training in Farben, Zahlen, Sprache und weiteren kognitiven Fähigkeiten – angepasst an individuelle Bedürfnisse.
 
-    Farbtraining mit Sprachausgabe zur Farbbenennung
+## ✨ Funktionen
 
-    Zahlentraining mit visueller Mengen- und Zahlenerkennung
+- 🎨 **Farbtraining** mit Sprachausgabe zur Farbbenennung
+- 🔢 **Zahlentraining** mit visueller Mengen- und Zahlenerkennung
+- ✍️ **Schreibtraining** und **kognitive Spiele** *(in Planung)*
+- 🤖 **KI-gestützte Analyse** der Lernfortschritte
+- 🧩 **Einfache Bedienung** mit großen Symbolen und klarer Sprache
+- 📴 **Offline-Nutzung** möglich – ideal für Einrichtungen ohne WLAN
 
-    Schreibtraining und kognitive Spiele (in Planung)
+## 🎯 Zielgruppe
 
-    KI-gestützte Analyse der Fortschritte: erkennt individuelle Stärken & Lernfelder
+- Menschen mit geistiger oder mehrfacher Behinderung  
+- Personen im Autismus-Spektrum  
+- Menschen mit Lernverzögerungen oder kognitiven Einschränkungen  
+- Werkstätten, Tagesstrukturen, Förderschulen, Inklusionsprojekte
 
-    Intuitive Bedienung mit großen Symbolen, einfacher Sprache und klarer Struktur
+## 💡 Vision
 
-    Offline-Nutzung auf Tablets (z. B. in Werkstätten, Tagesstrukturen oder zu Hause)
+**FörderHeld** will allen Menschen Zugang zu individueller Förderung ermöglichen – mit Empathie, KI und einfachen Mitteln. Lernen soll Spaß machen, bestärken und die Selbstständigkeit fördern.
 
-🎯 Zielgruppe:
+---
 
-    Menschen mit geistiger oder mehrfacher Behinderung
-
-    Menschen im Autismus-Spektrum
-
-    Personen mit Lernverzögerungen oder kognitiven Einschränkungen
-
-    Einrichtungen wie Werkstätten, Förderschulen oder Tagesbetreuungen
-
-💡 Vision:
-
-FörderHeld möchte allen Menschen – unabhängig von Fähigkeiten – Zugang zu individualisiertem, wertschätzendem Lernen bieten. Mit künstlicher Intelligenz, Empathie und einfachem Design schaffen wir neue Wege der Förderung.
+> 📱 Entwickelt in Flutter – für Android, iOS und Tablets.  
+> 🎓 Projekt aus dem sozialen Bereich – inspiriert durch direkte Arbeit mit Menschen mit Behinderung im Diakoniewerk Kirchbichl.
