@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'screens/color_training_screen.dart';
-import 'screens/number_training_screen.dart';
+import 'screens/color_training/color_training_screen.dart';
+import 'screens/number_training/number_training_screen.dart';
 
 void main() {
   runApp(const LernHeldApp());
