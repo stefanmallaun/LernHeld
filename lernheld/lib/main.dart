@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lernheld/screens/letter_training/letter_training_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/color_training/color_training_screen.dart';
 import 'screens/number_training/number_training_screen.dart';
@@ -21,6 +22,7 @@ class LernHeldApp extends StatelessWidget {
         '/': (context) => const HomeScreen(),
         '/color': (context) => const ColorTrainingScreen(),
         '/number': (context) => const NumberTrainingScreen(),
+        '/letter': (context) => const LetterTrainingScreen(),
       },
     );
   }
