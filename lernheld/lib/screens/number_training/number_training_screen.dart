@@ -29,23 +29,32 @@ class _NumberTrainingScreenState extends State<NumberTrainingScreen> {
     final rand = Random();
     final currentNumbers = numbers.take(numberCount).toList();
     targetNumber = currentNumbers[rand.nextInt(currentNumbers.length)];
-    if (isTestMode) {
+    if(isTestMode == true){
       tts.speak("Welche Zahl ist ${_numberToWord(targetNumber)}?");
     }
   }
 
-  void _checkAnswer(int selected) {
-    if (selected == targetNumber) {
-      tts.speak("Richtig!");
-      Future.delayed(const Duration(seconds: 1), () {
-        setState(() {
-          _generateNewTarget();
-        });
-      });
-    } else {
-      tts.speak("Leider falsch.");
-    }
+  void _checkAnswer(int selected) async {
+    
+  // Wenn die Antwort richtig ist
+  if (selected == targetNumber) {
+    // "Richtig!" aussprechen
+    await tts.speak("Richtig!");
+
+    // Setze den Zustand der neuen Zahl und frage erneut, ohne Verzögerung
+    setState(() {
+      _generateNewTarget(); // Neue Zahl generieren
+    });
+
+    // Direkt danach die Frage stellen
+    
+  } else {
+    // Wenn die Antwort falsch ist, sag "Leider falsch"
+    await tts.speak("Leider falsch.");
   }
+
+}
+
 
   String _numberToWord(int number) {
     const words = [

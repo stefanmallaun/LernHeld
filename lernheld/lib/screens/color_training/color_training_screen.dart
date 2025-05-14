@@ -4,7 +4,6 @@ import 'modes/color_learn_mode.dart';
 import 'modes/color_test_mode.dart';
 import '../../services/tts_service.dart';
 
-
 class ColorTrainingScreen extends StatefulWidget {
   const ColorTrainingScreen({super.key});
 
@@ -15,7 +14,7 @@ class ColorTrainingScreen extends StatefulWidget {
 class _ColorTrainingScreenState extends State<ColorTrainingScreen> {
   final TTSService tts = TTSService();
   bool isTestMode = false;
-  int colorCount = 6; 
+  int colorCount = 6;
 
   final List<Map<String, dynamic>> colors = [
     {'name': 'Rot', 'color': Colors.red},
@@ -27,6 +26,7 @@ class _ColorTrainingScreenState extends State<ColorTrainingScreen> {
   ];
 
   late Map<String, dynamic> targetColor;
+  Color backgroundColor = Colors.white;
 
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _ColorTrainingScreenState extends State<ColorTrainingScreen> {
     final currentColors = colors.take(colorCount).toList();
     if (currentColors.isEmpty) return;
 
-    targetColor = colors[rand.nextInt(currentColors.length)];
+    targetColor = currentColors[rand.nextInt(currentColors.length)];
     if (isTestMode) {
       tts.speak("Welche Farbe ist ${targetColor['name']}?");
     }
@@ -47,9 +47,14 @@ class _ColorTrainingScreenState extends State<ColorTrainingScreen> {
 
   void _checkColor(String selectedName) {
     if (selectedName == targetColor['name']) {
+      setState(() {
+        backgroundColor = Colors.green;
+      });
+
       tts.speak("Richtig!");
       Future.delayed(const Duration(seconds: 1), () {
         setState(() {
+          backgroundColor = Colors.white;
           _generateNewTarget();
         });
       });
@@ -64,77 +69,87 @@ class _ColorTrainingScreenState extends State<ColorTrainingScreen> {
       appBar: AppBar(
         title: const Text('🎨 Farbtraining – Lernheld'),
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: !isTestMode ? Colors.blue : Colors.grey[300],
-                  foregroundColor: !isTestMode ? Colors.white : Colors.black,
-                ),
-                onPressed: () {
-                  setState(() {
-                    isTestMode = false;
-                  });
-                },
-                child: const Text('Farben üben'),
-              ),
-              const SizedBox(width: 16),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: isTestMode ? Colors.blue : Colors.grey[300],
-                  foregroundColor: isTestMode ? Colors.white : Colors.black,
-                ),
-                onPressed: () {
-                  setState(() {
-                    isTestMode = true;
-                    _generateNewTarget();
-                  });
-                },
-                child: const Text('Farben erkennen'),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: isTestMode
-                ? ColorTestMode(
-                    colors: colors.take(colorCount).toList(),
-                    targetColor: targetColor,
-                    onSelect: _checkColor,
-                    tts: tts,
-                  )
-                : ColorLearnMode(
-                    colors: colors.take(colorCount).toList(),
-                    tts: tts,
-                  ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+      body: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        color: backgroundColor,
+        child: Column(
+          children: [
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Anzahl der Farben:'),
-                Slider(
-                  value: colorCount.toDouble(),
-                  min: 2,
-                  max: colors.length.toDouble(),
-                  divisions: colors.length - 2,
-                  label: '$colorCount',
-                  onChanged: (value) {
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        !isTestMode ? Colors.blue : Colors.grey[300],
+                    foregroundColor:
+                        !isTestMode ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
                     setState(() {
-                      colorCount = value.toInt();
-                      if (isTestMode) _generateNewTarget();
+                      isTestMode = false;
+                      backgroundColor = Colors.white;
                     });
                   },
+                  child: const Text('Farben üben'),
+                ),
+                const SizedBox(width: 16),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        isTestMode ? Colors.blue : Colors.grey[300],
+                    foregroundColor:
+                        isTestMode ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isTestMode = true;
+                      backgroundColor = Colors.white;
+                      _generateNewTarget();
+                    });
+                  },
+                  child: const Text('Farben erkennen'),
                 ),
               ],
             ),
-          ),
-        ],
+            const SizedBox(height: 16),
+            Expanded(
+              child: isTestMode
+                  ? ColorTestMode(
+                      colors: colors.take(colorCount).toList(),
+                      targetColor: targetColor,
+                      onSelect: _checkColor,
+                      tts: tts,
+                    )
+                  : ColorLearnMode(
+                      colors: colors.take(colorCount).toList(),
+                      tts: tts,
+                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text('Anzahl der Farben:'),
+                  Slider(
+                    value: colorCount.toDouble(),
+                    min: 2,
+                    max: colors.length.toDouble(),
+                    divisions: colors.length - 2,
+                    label: '$colorCount',
+                    onChanged: (value) {
+                      setState(() {
+                        colorCount = value.toInt();
+                        if (isTestMode) _generateNewTarget();
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
