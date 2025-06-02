@@ -18,6 +18,8 @@ class _NumberTrainingScreenState extends State<NumberTrainingScreen> {
 
   final List<int> numbers = List.generate(10, (i) => i); // 0–9
   late int targetNumber;
+  
+
 
   @override
   void initState() {
@@ -26,31 +28,30 @@ class _NumberTrainingScreenState extends State<NumberTrainingScreen> {
   }
 
   void _generateNewTarget() {
-    final rand = Random();
-    final currentNumbers = numbers.take(numberCount).toList();
+  final rand = Random();
+  final currentNumbers = numbers.take(numberCount).toList();
+  setState(() {
     targetNumber = currentNumbers[rand.nextInt(currentNumbers.length)];
-    if(isTestMode == true){
-      tts.speak("Welche Zahl ist ${_numberToWord(targetNumber)}?");
-    }
-  }
+  });
 
-  void _checkAnswer(int selected) async {
+  if (isTestMode) {
     
-  // Wenn die Antwort richtig ist
+    
+     tts.speak("Welche Zahl ist ${_numberToWord(targetNumber)}?");
+    
+  }
+}
+
+  void _checkAnswer(int selected) {
   if (selected == targetNumber) {
     // "Richtig!" aussprechen
-    await tts.speak("Richtig!");
+    tts.speak("Richtig!");
 
-    // Setze den Zustand der neuen Zahl und frage erneut, ohne Verzögerung
-    setState(() {
-      _generateNewTarget(); // Neue Zahl generieren
-    });
-
-    // Direkt danach die Frage stellen
+    _generateNewTarget(); 
     
   } else {
     // Wenn die Antwort falsch ist, sag "Leider falsch"
-    await tts.speak("Leider falsch.");
+    tts.speak("Leider falsch.");
   }
 
 }
