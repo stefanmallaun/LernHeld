@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'letter_paths.dart';
 
 class LetterTracingScreen extends StatefulWidget {
   final String letter;
@@ -12,29 +13,6 @@ class LetterTracingScreen extends StatefulWidget {
 
 class _LetterTracingScreenState extends State<LetterTracingScreen> {
   List<Offset> points = [];
-
-  final Map<String, List<Path>> referencePaths = {
-    'A': [
-      Path()
-        ..moveTo(0.1, 0.43)
-        ..lineTo(0.5, 0.0)
-        ..lineTo(0.9, 0.43),
-      Path()
-        ..moveTo(0.25, 0.28)
-        ..lineTo(0.75, 0.28),
-    ],
-    'B': [
-      Path()
-        ..moveTo(0.1, 0.0)
-        ..lineTo(0.1, 1.0),
-      Path()
-        ..moveTo(0.1, 0.0)
-        ..cubicTo(0.6, 0.0, 0.6, 0.5, 0.1, 0.5),
-      Path()
-        ..moveTo(0.1, 0.5)
-        ..cubicTo(0.6, 0.5, 0.6, 1.0, 0.1, 1.0),
-    ],
-  };
 
   double calculateAccuracy(List<Offset> userPoints, List<Path> scaledRefPaths) {
     const double tolerance = 30.0;
@@ -88,32 +66,15 @@ class _LetterTracingScreenState extends State<LetterTracingScreen> {
                   (constraints.maxHeight - letterSize.height) / 2,
                 );
 
-                final scaledPaths = referencePaths[widget.letter]!
-                    .map((path) => _scalePath(path, letterOffset, letterSize))
-                    .toList();
+                final scaledPaths = letterPaths[widget.letter]!
+                  .map((path) => _scalePath(path, letterOffset, letterSize))
+                  .toList();
 
                 final accuracy = calculateAccuracy(points, scaledPaths);
 
                 return Stack(
                   children: [
-                    // Grauer Buchstabe
-                    Positioned(
-                      left: letterOffset.dx,
-                      top: letterOffset.dy,
-                      width: letterSize.width,
-                      height: letterSize.height,
-                      child: FittedBox(
-                        fit: BoxFit.contain,
-                        child: Text(
-                          widget.letter,
-                          style: TextStyle(
-                            fontSize: 1000,
-                            color: Colors.grey.shade300,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
+
                     // Zeichenbereich + Roter Pfad
                     Positioned.fill(
                       child: GestureDetector(
@@ -172,11 +133,12 @@ class TracePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // Benutzerzeichnung (blau)
-    final userPaint = Paint()
+    final userPaint = Paint() 
       ..color = Colors.blue
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 12
+      ..strokeWidth = 10
       ..style = PaintingStyle.stroke;
+
 
     for (int i = 0; i < points.length - 1; i++) {
       if (points[i] != Offset.zero && points[i + 1] != Offset.zero) {
@@ -186,9 +148,10 @@ class TracePainter extends CustomPainter {
 
     // Referenzpfad (rot)
     final refPaint = Paint()
-      ..color = Colors.red
-      ..strokeWidth = 4
-      ..style = PaintingStyle.stroke;
+      ..color = Colors.red.withOpacity(0.4) // semi-transparent
+      ..strokeWidth = 20                    // thicker
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
 
     for (final path in refPaths) {
       canvas.drawPath(path, refPaint);

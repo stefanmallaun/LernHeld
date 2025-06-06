@@ -4,7 +4,7 @@ import 'letter_tracing_screen.dart'; // make sure this import path is correct
 class LetterTrainingScreen extends StatelessWidget {
   const LetterTrainingScreen({super.key});
 
-  final List<String> letters = const ['A', 'B', 'C', 'D', 'E']; // Add more as needed
+  final List<String> letters = const ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
   @override
   Widget build(BuildContext context) {
