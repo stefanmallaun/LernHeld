@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import 'letter_paths.dart';
 
 class LetterTracingScreen extends StatefulWidget {

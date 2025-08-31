@@ -84,14 +84,14 @@ final Map<String, List<Path>> letterPaths = {
     Path()..moveTo(0.2, 1.0)..lineTo(0.2, 0.0)..lineTo(0.8, 1.0)..lineTo(0.8, 0.0),
   ],
   'O': [
-    Path()..addOval(Rect.fromLTWH(0.2, 0.1, 0.6, 0.8)),
+    Path()..addOval(const Rect.fromLTWH(0.2, 0.1, 0.6, 0.8)),
   ],
   'P': [
     Path()..moveTo(0.2, 0.0)..lineTo(0.2, 1.0),
     Path()..moveTo(0.2, 0.0)..quadraticBezierTo(0.8, 0.0, 0.8, 0.3)..quadraticBezierTo(0.8, 0.5, 0.2, 0.5),
   ],
   'Q': [
-    Path()..addOval(Rect.fromLTWH(0.2, 0.1, 0.6, 0.8)),
+    Path()..addOval(const Rect.fromLTWH(0.2, 0.1, 0.6, 0.8)),
     Path()..moveTo(0.6, 0.6)..lineTo(0.9, 1.0),
   ],
   'R': [

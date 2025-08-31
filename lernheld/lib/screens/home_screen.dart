@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:lernheld/services/UserControl.dart';
+import 'package:lernheld/screens/UserControll_screen.dart/profile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final UserController userController = UserController(); // Singleton
+    final bool isLoggedIn = userController.isLoggedIn();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('🎓 LernHeld'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(isLoggedIn ? Icons.person : Icons.login),
+            tooltip: isLoggedIn ? "Profil" : "Login",
+            onPressed: () {
+              if (isLoggedIn) {
+                Navigator.pushReplacementNamed(context, '/profile', arguments: userController.getCurrentUserEmail());
+              } else {
+                Navigator.pushReplacementNamed(context, '/login');
+              }
+            },
+          ),
+        ],
       ),
       body: Container(
         width: double.infinity,

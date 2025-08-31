@@ -51,7 +51,7 @@ class _NumberTestModeState extends State<NumberTestMode> {
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         // Setze alle Farben auf die freundliche Farbe zurück
-        _buttonColors = List.generate(widget.numbers.length, (index) => Color.fromARGB(255, 194, 193, 193));
+        _buttonColors = List.generate(widget.numbers.length, (index) => const Color.fromARGB(255, 194, 193, 193));
       });
     });
   }
@@ -61,7 +61,7 @@ class _NumberTestModeState extends State<NumberTestMode> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final crossAxisCount = constraints.maxWidth > 600 ? 4 : 3;
-        final spacing = 16.0;
+        const spacing = 16.0;
         final totalSpacing = (crossAxisCount - 1) * spacing + 32;
         final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
         final rows = (widget.numbers.length / crossAxisCount).ceil();

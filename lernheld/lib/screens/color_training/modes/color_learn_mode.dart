@@ -16,7 +16,7 @@ class ColorLearnMode extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final crossAxisCount = constraints.maxWidth > 600 ? 3 : 2;
-        final spacing = 16.0;
+        const spacing = 16.0;
         final totalSpacing = (crossAxisCount - 1) * spacing + 32;
         final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
         final rows = (colors.length / crossAxisCount).ceil();

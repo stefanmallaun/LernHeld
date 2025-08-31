@@ -28,7 +28,7 @@ class NumberLearnMode extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final crossAxisCount = constraints.maxWidth > 600 ? 4 : 3;
-        final spacing = 16.0;
+        const spacing = 16.0;
         final totalSpacing = (crossAxisCount - 1) * spacing + 32; // + padding
         final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
         final rows = (numbers.length / crossAxisCount).ceil();

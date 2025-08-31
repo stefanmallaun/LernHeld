@@ -1,3 +1,8 @@
-# lernheld
+#TODO
 
-A new Flutter project.
+# Log-In User feedback etc
+    - Login
+    - Logout
+    - register
+    - Feedback with pie chart etc 
+    
