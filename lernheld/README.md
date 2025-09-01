@@ -5,4 +5,7 @@
     - Logout
     - register
     - Feedback with pie chart etc 
+    (theoretisch alles gelöst)
+
+    - DataBase SQLite
     
